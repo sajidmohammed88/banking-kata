@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Banking", "Banking\Banking.csproj", "{C7816916-569D-44DC-9CAD-009D1611C1D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Banking", "..\BankingKata\Banking\Banking.csproj", "{C7816916-569D-44DC-9CAD-009D1611C1D6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Banking.Tests.Acceptance", "Banking.Tests.Acceptance\Banking.Tests.Acceptance.csproj", "{1223EA0D-A6BA-46A3-BAD6-350C187A7680}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Banking.Tests.Acceptance", "..\BankingKata\Banking.Tests.Acceptance\Banking.Tests.Acceptance.csproj", "{1223EA0D-A6BA-46A3-BAD6-350C187A7680}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Banking.Tests.Unit", "Banking.Tests.Unit\Banking.Tests.Unit.csproj", "{0D158EB8-5124-448B-8334-7533114FF734}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Banking.Tests.Unit", "..\BankingKata\Banking.Tests.Unit\Banking.Tests.Unit.csproj", "{0D158EB8-5124-448B-8334-7533114FF734}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
