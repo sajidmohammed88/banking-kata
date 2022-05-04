@@ -8,17 +8,17 @@ namespace Banking.Tests.Acceptance.Steps
     public sealed class BankingAccountOperationsStepDefinitions
     {
         // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
-
+        private Account _account;
         public BankingAccountOperationsStepDefinitions()
         {
-            
+            _account = new Account();
         }
 
         [Given(@"a client makes a deposit of (.*) on (.*)")]
         [Given(@"a deposit of (.*) on (.*)")]
-        public void GivenAClientMakesADepositOfOn(int amount, DateTime p1)
+        public void GivenAClientMakesADepositOfOn(int amount, DateTime date)
         {
-            
+            _account.Deposit(amount, date);
         }
 
         [When(@"she prints her bank statement")]
@@ -34,9 +34,9 @@ namespace Banking.Tests.Acceptance.Steps
         }
 
         [Given(@"a withdrawal of (.*) on (.*)")]
-        public void GivenAWithdrawalOfOn(int p0, string p1)
+        public void GivenAWithdrawalOfOn(int amount, DateTime date)
         {
-            ScenarioContext.StepIsPending();
+            _account.Withdraw(amount, date); 
         }
     }
 }
