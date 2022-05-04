@@ -9,18 +9,16 @@ namespace Banking.Tests.Acceptance.Steps
     {
         // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
 
-        private readonly ScenarioContext _scenarioContext;
-
-        public BankingAccountOperationsStepDefinitions(ScenarioContext scenarioContext)
+        public BankingAccountOperationsStepDefinitions()
         {
-            _scenarioContext = scenarioContext;
+            
         }
 
         [Given(@"a client makes a deposit of (.*) on (.*)")]
         [Given(@"a deposit of (.*) on (.*)")]
-        public void GivenAClientMakesADepositOfOn(int p0, DateTime p1)
+        public void GivenAClientMakesADepositOfOn(int amount, DateTime p1)
         {
-            ScenarioContext.StepIsPending();
+            
         }
 
         [When(@"she prints her bank statement")]
