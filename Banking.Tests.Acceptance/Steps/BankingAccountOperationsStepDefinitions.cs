@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Globalization;
 using TechTalk.SpecFlow;
+using Xunit;
 
 namespace Banking.Tests.Acceptance.Steps
 {
@@ -20,28 +22,29 @@ namespace Banking.Tests.Acceptance.Steps
 
         [Given(@"a client makes a deposit of (.*) on (.*)")]
         [Given(@"a deposit of (.*) on (.*)")]
-        public void GivenAClientMakesADepositOfOn(int amount, DateTime date)
+        public void GivenAClientMakesADepositOfOn(int amount, string date)
         {
-            _account.Deposit(amount, date);
+            DateTime.TryParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal, out DateTime dateTime);
+            _account.Deposit(amount, dateTime);
         }
 
         [When(@"she prints her bank statement")]
         public void WhenShePrintsHerBankStatement()
         {
-            Statement statement = _account.Statement;
-            _printedResult = _printer.Print(statement);
+            _printedResult = _printer.Print(_account.Statement);
         }
 
         [Then(@"she would see")]
         public void ThenSheWouldSee(string multilineText)
         {
-            ScenarioContext.StepIsPending();
+            Assert.Equal(multilineText, _printedResult);
         }
 
         [Given(@"a withdrawal of (.*) on (.*)")]
-        public void GivenAWithdrawalOfOn(int amount, DateTime date)
+        public void GivenAWithdrawalOfOn(int amount, string date)
         {
-            _account.Withdraw(amount, date); 
+            DateTime.TryParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal, out DateTime dateTime);
+            _account.Withdraw(amount, dateTime);
         }
     }
 }
