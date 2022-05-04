@@ -9,9 +9,13 @@ namespace Banking.Tests.Acceptance.Steps
     {
         // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
         private Account _account;
+        private Printer _printer;
+        private string _printedResult;
+
         public BankingAccountOperationsStepDefinitions()
         {
             _account = new Account();
+            _printer = new Printer();
         }
 
         [Given(@"a client makes a deposit of (.*) on (.*)")]
@@ -24,7 +28,8 @@ namespace Banking.Tests.Acceptance.Steps
         [When(@"she prints her bank statement")]
         public void WhenShePrintsHerBankStatement()
         {
-            ScenarioContext.StepIsPending();
+            Statement statement = _account.Statement;
+            _printedResult = _printer.Print(statement);
         }
 
         [Then(@"she would see")]
