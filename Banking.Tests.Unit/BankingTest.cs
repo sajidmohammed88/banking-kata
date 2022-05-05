@@ -114,5 +114,85 @@ namespace Banking.Tests.Unit
             Assert.NotNull(amountException);
             Assert.Equal("Cannot withdraw a negative amount", amountException.Message);
         }
+
+        [Fact]
+        public void Should_return_transaction_with_amount_and_date_when_deposing()
+        {
+            //Arrange
+            const int amountToDeposit = 500;
+
+
+            //Act 
+            _account.Deposit(amountToDeposit, DateTime.Now);
+            var statement = _account.GetStatement();
+
+            //Assert
+            Assert.NotNull(statement);
+            Assert.Single(statement.Transactions);
+
+            Assert.Collection(statement.Transactions, tr => Assert.True(tr is Deposit));
+
+        }
+
+        [Fact]
+        public void Should_return_transaction_with_amount_and_date_when_deposing_twice()
+        {
+            //Arrange
+            const int amountToDepositOne = 500;
+            const int amountToDepositTwo = 400;
+
+
+            //Act 
+            _account.Deposit(amountToDepositOne, DateTime.Now);
+            _account.Deposit(amountToDepositTwo, DateTime.Now);
+            var statement = _account.GetStatement();
+
+            //Assert
+            Assert.NotNull(statement);
+            Assert.Equal(2, statement.Transactions.Count);
+
+            Assert.Collection(statement.Transactions, tr => Assert.True(tr is Deposit));
+
+        }
+
+
+        [Fact]
+        public void Should_return_transaction_with_amount_and_date_when_withdrawing()
+        {
+            //Arrange
+            const int amountToWithdraw = 500;
+
+
+            //Act 
+            _account.Withdraw(amountToWithdraw, DateTime.Now);
+            var statement = _account.GetStatement();
+
+            //Assert
+            Assert.NotNull(statement);
+            Assert.Single(statement.Transactions);
+            Assert.Collection(statement.Transactions, tr => Assert.True(tr is Withdraw));
+
+        }
+
+        [Fact]
+        public void Should_return_transaction_with_amount_and_date_when_withdrawing_twice()
+        {
+            //Arrange
+            const int amountToWithdrawOne = 500;
+            const int amountToWithdrawTwo = 400;
+
+
+            //Act 
+            _account.Withdraw(amountToWithdrawOne, DateTime.Now);
+            _account.Withdraw(amountToWithdrawTwo, DateTime.Now);
+            var statement = _account.GetStatement();
+
+            //Assert
+            Assert.NotNull(statement);
+            Assert.Equal(2, statement.Transactions.Count);
+            Assert.Collection(statement.Transactions, tr => Assert.True(tr is Withdraw));
+
+        }
+
     }
 }

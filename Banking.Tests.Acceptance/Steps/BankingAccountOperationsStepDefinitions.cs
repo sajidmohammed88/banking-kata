@@ -31,7 +31,7 @@ namespace Banking.Tests.Acceptance.Steps
         [When(@"she prints her bank statement")]
         public void WhenShePrintsHerBankStatement()
         {
-            _printedResult = _printer.Print(_account.Statement);
+            _printedResult = _printer.Print(_account.GetStatement());
         }
 
         [Then(@"she would see")]
