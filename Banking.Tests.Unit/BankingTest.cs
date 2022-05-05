@@ -96,19 +96,23 @@ namespace Banking.Tests.Unit
         {
             //Arrange
             const int amountToDeposit = -500;
-            Exception exception = null;
-            //Act
 
-            try
-            {
-                _account.Deposit(amountToDeposit, DateTime.Now);
-            }
-            catch (Exception ex)
-            {
-                exception = ex;
-            }
-            //Assert
-            Assert.NotNull(exception);
+            //Act & Assert
+            var amountException = Assert.Throws<InvalidAmountException>(() => _account.Deposit(amountToDeposit, DateTime.Now));
+            Assert.NotNull(amountException);
+            Assert.Equal("Cannot deposit a negative amount", amountException.Message);
+        }
+
+        [Fact]
+        public void Should_throw_exception_when_withdrawing_negative_amount()
+        {
+            //Arrange
+            const int amountToWithdraw = -500;
+
+            //Act & Assert
+            var amountException = Assert.Throws<InvalidAmountException>(() => _account.Withdraw(amountToWithdraw, DateTime.Now));
+            Assert.NotNull(amountException);
+            Assert.Equal("Cannot withdraw a negative amount", amountException.Message);
         }
     }
 }

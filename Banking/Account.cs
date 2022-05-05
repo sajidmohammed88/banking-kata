@@ -10,6 +10,8 @@ namespace Banking
 
         public void Deposit(int amount, DateTime date)
         {
+            if (amount < 0)
+                throw new InvalidAmountException("Cannot deposit a negative amount");
             Balance += amount;
         }
 
