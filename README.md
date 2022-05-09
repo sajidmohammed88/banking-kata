@@ -7,9 +7,9 @@ When in doubt, go for the simplest solution
 
 ## Requirements
 
-- [ ] Deposit and Withdrawal
-- [ ] Account statement (date, amount, balance)
-- [ ] Statement printing
+- [X] Deposit and Withdrawal
+- [X] Account statement (date, amount, balance)
+- [X] Statement printing
 - [ ] Transfer
 - [ ] Statement filters (just deposits, withdrawal, date)
 - [ ] Account status (open, closed, frozen)
